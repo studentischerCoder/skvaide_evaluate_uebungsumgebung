@@ -1,7 +1,11 @@
-import urllib.request
 import os
+import subprocess
 
-url = "https://raw.githubusercontent.com/studentischerCoder/skvaide_evaluate_uebungsumgebung/main/src/skvaider_evaluate_uebungsumgebung/__init__.py"
+def main():
+    eval_script = os.path.join(os.path.dirname(__file__), "eval_dummy.py")
+    
+    if os.path.exists(eval_script):
+        subprocess.run(["python3", eval_script], check=True)
 
-urllib.request.urlretrieve(url, "eval_dummy.py")
-os.system("python eval_dummy.py")
+if __name__ == "__main__":
+    main()
